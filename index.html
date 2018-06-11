@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Jeu du Taquin</title>
-    <script type="text/javascript" src="taquin.js"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="taquin.js"></script>
+
 
 </head>
 <body>
@@ -17,34 +20,34 @@
 </div>
 <div class="container-fluid">
     <table>
-        <tr>
-            <td class="case" id="case0">1</td>
-            <td class="case" id="case1">2</td>
-            <td class="case" id="case2">3</td>
-            <td class="case" id="case3">4</td>
+        <tr class = "row0">
+            <td class="case0" ></td>
+            <td class="case1" ></td>
+            <td class="case2" ></td>
+            <td class="case3" ></td>
         </tr>
-        <tr>
-            <td class="case" id="case4">5</td>
-            <td class="case" id="case5">6</td>
-            <td class="case" id="case6">7</td>
-            <td class="case" id="case7">8</td>
+        <tr class = "row1">
+            <td class="case0" ></td>
+            <td class="case1" ></td>
+            <td class="case2" ></td>
+            <td class="case3" ></td>
         </tr>
-        <tr>
-            <td class="case" id="case8">9</td>
-            <td class="case" id="case9">10</td>
-            <td class="case" id="case10">11</td>
-            <td class="case" id="case11">12</td>
+        <tr class = "row2">
+            <td class="case0" ></td>
+            <td class="case1" ></td>
+            <td class="case2" ></td>
+            <td class="case3" ></td>
         </tr>
-        <tr>
-            <td class="case" id="case12">13</td>
-            <td class="case" id="case13">14</td>
-            <td class="case" id="case14">15</td>
-            <td class="case" id="currentCase"></td>
+        <tr class = "row3">
+            <td class="case0" ></td>
+            <td class="case1" ></td>
+            <td class="case2" ></td>
+            <td class="case3" ></td>
         </tr>
     </table>
 </div>
 <div class="container-fluid, buttons">
-    <button type="button" class="btn btn-danger">Réinitialiser</button>
+    <button type="button" id="btn" class="btn btn-danger">Réinitialiser</button>
     <button type="button" class="btn btn-success">Jouer</button>
 </div>
 </body>
