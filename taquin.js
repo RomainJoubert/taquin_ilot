@@ -22,7 +22,18 @@ $(document).ready(function() {
     for(let i=0; i<tab.length;i++) {
         for (let j = 0; j < tab.length; j++) {
              $('.row'+i + ' .case'+j).click(function(){
-                console.log(permuter(i+1,j,i,j));
+                 if(existe(i+1,j) && vide(i+1,j)){
+                     permuter(i + down,j,i,j);
+                 }else if(existe(i -1,j) && vide(i-1,j)) {
+                     permuter(i + up,j,i,j);
+                 }else if (existe(i,j+1) && vide(i,j+1)) {
+                     permuter(i,j + right,i,j);
+                 }else if(existe(i,j-1) && vide(i,j-1)) {
+                     permuter(i,j + left,i,j);
+                 }else {
+                     console.log("error");
+                 }
+
             })
 
         }
@@ -36,7 +47,7 @@ function dessiner () {
         }
     }
 }
-function vide (i,j) {
+function vide(i,j) {
     let v;
     if(tab[i][j] === ""){
         v = true;
@@ -45,36 +56,33 @@ function vide (i,j) {
     }
     return v;
 }
-function existe (i,j) {
+function existe(i,j) {
     let e;
-    if (i> 0 && i<= 3 && j>0 && j<=3) {
+    if (i>= 0 && i<= 3 && j>=0 && j<=3) {
         e = true;
     }else {
         e = false;
     }
     return e;
 }
-function permutable (i,j) {
-    let p;
-    if(existe(i,j-1) && vide(i,j-1) || existe(i,j+1) && vide(i,j+1) || existe(i-1,j) && vide(i-1,j) || existe(i+1,j) && vide(i+1,j)) {
-            p = true;
-    }else {
-           p = false;
-    }
-    return p;
-}
+// function permutable(i,j) {
+//     let p;
+//     if(existe(i,j-1) && vide(i,j-1) || existe(i,j+1) && vide(i,j+1) || existe(i-1,j) && vide(i-1,j) || existe(i+1,j) && vide(i+1,j)) {
+//             p = true;
+//     }else {
+//            p = false;
+//     }
+//     return p;
+// }
 
 function permuter (i1,j1,i2,j2) {
-    let vide = tab[i1][j1];
-    let nonVide = tab[i2][j2];
+        let v = tab[i1][j1]; // v = ""
+        let nonVide = tab[i2][j2]; // nonVide = 12
 
+        tab[i1][j1] = nonVide; // "" = 12
+        tab[i2][j2] = v; // 12 = ""
 
-    if(permutable(i2,j2) === true) {
-        tab[i1][j1] = nonVide;
-        tab[i2][j2] = vide;
-        dessiner();
-    }
-
-    return tab;
+        dessiner();// redessine le tableau
+        return tab;
 }
 
