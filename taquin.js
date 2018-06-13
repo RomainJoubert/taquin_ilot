@@ -9,16 +9,13 @@ let down = 1;
 let left = -1;
 let right = 1;
 
-
-
-
-
 $(document).ready(function() {
     for(let i=0; i<tab.length;i++) {
         for (let j = 0; j < tab.length; j++) {
             $('.row'+i + ' .case'+j).append(tab[i][j]);
         }
     }
+
     for(let i=0; i<tab.length;i++) {
         for (let j = 0; j < tab.length; j++) {
              $('.row'+i + ' .case'+j).click(function(){
@@ -33,13 +30,15 @@ $(document).ready(function() {
                  }else {
                      console.log("error");
                  }
-
-            })
-
+            });
         }
     }
+    $('#btn').click(function() {
+        melanger();
 
+    });
 });
+
 function dessiner () {
     for(let i=0; i<tab.length;i++) {
         for (let j = 0; j < tab.length; j++) {
@@ -47,6 +46,7 @@ function dessiner () {
         }
     }
 }
+
 function vide(i,j) {
     let v;
     if(tab[i][j] === ""){
@@ -56,6 +56,7 @@ function vide(i,j) {
     }
     return v;
 }
+
 function existe(i,j) {
     let e;
     if (i>= 0 && i<= 3 && j>=0 && j<=3) {
@@ -65,15 +66,6 @@ function existe(i,j) {
     }
     return e;
 }
-// function permutable(i,j) {
-//     let p;
-//     if(existe(i,j-1) && vide(i,j-1) || existe(i,j+1) && vide(i,j+1) || existe(i-1,j) && vide(i-1,j) || existe(i+1,j) && vide(i+1,j)) {
-//             p = true;
-//     }else {
-//            p = false;
-//     }
-//     return p;
-// }
 
 function permuter (i1,j1,i2,j2) {
         let v = tab[i1][j1]; // v = ""
@@ -86,3 +78,25 @@ function permuter (i1,j1,i2,j2) {
         return tab;
 }
 
+function tabsimple() {
+    let test = [];
+    for(let i=0; i<tab.length;i++) {
+        for (let j = 0; j < tab.length; j++) {
+            test.push(tab[i][j]);
+        }
+    }
+    return test;
+}
+
+
+
+function melanger () {
+
+    tableau = tabsimple();
+    for (let i = tab.length-1; i>=1;i--) {
+        let hi = Math.floor(Math.random() * (i + 1));
+        let si = tableau[i];
+        tableau[i] = tableau[hi];
+        tableau[hi] = si;
+    }
+}
