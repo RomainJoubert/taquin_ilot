@@ -137,13 +137,10 @@ $(document).ready(function () {
  }
 function permutable(i,j) {
     let test;
-    if (existe(i + 1, j) && vide(i + 1, j)) || {
-        test = true;
-    } else if (existe(i - 1, j) && vide(i - 1, j)) {
-        test = true;
-    } else if (existe(i, j + 1) && vide(i, j + 1)) {
-        test = true;
-    } else if (existe(i, j - 1) && vide(i, j - 1)) {
+    if ( (existe(i + 1, j) && vide(i + 1, j)) ||
+    (existe(i - 1, j) && vide(i - 1, j)) ||
+        (existe(i, j + 1) && vide(i, j + 1)) ||
+        (existe(i, j - 1) && vide(i, j - 1))){
         test = true;
     } else {
         test = false;
