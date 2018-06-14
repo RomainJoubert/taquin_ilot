@@ -39,10 +39,16 @@ $(document).ready(function() {
     });
 });
 
-function dessiner () {
-    for(let i=0; i<tab.length;i++) {
-        for (let j = 0; j < tab.length; j++) {
-            $('.row'+i + ' .case'+j).html(tab[i][j]);
+function dessiner (tableau) {
+    if(tableau.length === 4) {
+        for (let i = 0; i < tableau.length; i++) {
+            for (let j = 0; j < tableau.length; j++) {
+                $('.row' + i + ' .case' + j).html(tableau[i][j]);
+            }
+        }
+    }else {
+        for (let i = 0; i < tableau.length; i++) {
+            $('#case' + i).html(tableau[i]);
         }
     }
 }
@@ -74,7 +80,7 @@ function permuter (i1,j1,i2,j2) {
         tab[i1][j1] = nonVide; // "" = 12
         tab[i2][j2] = v; // 12 = ""
 
-        dessiner();// redessine le tableau
+        dessiner(tab);// redessine le tableau
         return tab;
 }
 
@@ -88,15 +94,14 @@ function tabsimple() {
     return test;
 }
 
-
-
 function melanger () {
 
     tableau = tabsimple();
-    for (let i = tab.length-1; i>=1;i--) {
+    for (let i = tableau.length-1; i>=1;i--) {
         let hi = Math.floor(Math.random() * (i + 1));
         let si = tableau[i];
         tableau[i] = tableau[hi];
         tableau[hi] = si;
     }
+    dessiner(tableau);
 }
